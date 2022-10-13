@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Firebaseを使った読み書き確認</h1>
+    <input v-model="message" />
+    <button type="button" class="btn btn-primary" @click="addMessage">メッセージを追加</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import firebase from '../firebase/compat/app'
+import "../firebase/compat/database";
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+  name: "HomeView",
+  data() {
+    return {
+      message: "",
+    };
+  },
+  methods: {
+    addMessage() {
+      firebase.database().ref("slack")
+        .set({
+          content: this.message,
+          user: {
+            name: "John Doe"
+          }
+        });
+    }
   }
-}
+};
 </script>
