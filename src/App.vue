@@ -1,7 +1,8 @@
 <template>
+  <img alt="Vue logo" src="./assets/logo.png">
   <nav>
     <router-link to="/">Table</router-link> |
-    <router-link to="/abb">Add</router-link>
+    <router-link to="/add">Add</router-link>
   </nav>
   <router-view/>
 </template>
