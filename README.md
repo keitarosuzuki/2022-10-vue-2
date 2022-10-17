@@ -22,7 +22,7 @@ npm run lint
 
 ### 成果物
 ```
-(https://vue-2-57f83.web.app/).
+https://vue-2-57f83.web.app/
 ```
 
 ### Customize configuration
