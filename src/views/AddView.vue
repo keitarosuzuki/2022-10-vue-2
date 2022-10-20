@@ -2,14 +2,47 @@
   <div>
     <h1>Firebase Realtime Database 登録 動作確認</h1>
     <div class="input-group mb-3">
-      <input v-model="name" type="text" class="form-control" placeholder="名前" aria-label="Username" aria-describedby="basic-addon1">
-      <input v-model="age" type="text" class="form-control" placeholder="歳" aria-label="Username" aria-describedby="basic-addon1">
-      <input v-model="birthday" type="text" class="form-control" placeholder="生年月日" aria-label="Username" aria-describedby="basic-addon1">
-      <input v-model="gender" type="text" class="form-control" placeholder="性別" aria-label="Username" aria-describedby="basic-addon1">
-      <input v-model="part" type="text" class="form-control" placeholder="パート" aria-label="Username" aria-describedby="basic-addon1">
-      <input v-model="group" type="text" class="form-control" placeholder="グループなど" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" 
+             class="form-control border-success border-2" 
+             placeholder="名前" 
+             aria-label="Username" 
+             aria-describedby="basic-addon1"
+             v-model="name">
+      <input type="number" 
+             class="form-control border-danger border-2" 
+             placeholder="歳" 
+             aria-label="Username" 
+             aria-describedby="basic-addon1" 
+             v-model="age">
+      <input type="date" 
+             class="form-control" 
+             placeholder="生年月日" 
+             aria-label="Username" 
+             aria-describedby="basic-addon1" 
+             v-model="birthday">
+      <select class="form-select" 
+              id="inputGroupSelect01" 
+              v-model="gender">
+        <option value="男">男</option>
+        <option value="女">女</option>
+        <option value="不明">不明</option>
+      </select>
+      <input type="text" 
+             class="form-control" 
+             placeholder="パート" 
+             aria-label="Username" 
+             aria-describedby="basic-addon1" 
+             v-model="part">
+      <input type="text" 
+             class="form-control" 
+             placeholder="グループなど" 
+             aria-label="Username" 
+             aria-describedby="basic-addon1" 
+             v-model="group">
     </div>
-    <button type="button" class="btn btn-success btn-sm" @click="addMember">メンバーを追加</button>
+    <button type="button" 
+            class="btn btn-success btn-sm" 
+            @click="addMember">メンバーを追加</button>
   </div>
 </template>
 
@@ -31,14 +64,19 @@ export default {
   },
   methods: {
     addMember() {
-      firebase.database().ref("member/").push({
-        name: this.name,
-        age: this.age,
-        birthday: this.birthday,
-        gender: this.gender,
-        part: this.part,
-        group: this.group,
-      });
+      var result = confirm('登録しますか？');
+      if(result) {
+        firebase.database().ref("member/").push({
+          name: this.name,
+          age: this.age,
+          birthday: this.birthday,
+          gender: this.gender,
+          part: this.part,
+          group: this.group,
+        });
+      } else {
+        return
+      }
     },
   }
 };

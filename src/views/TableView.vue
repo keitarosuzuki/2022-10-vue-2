@@ -25,6 +25,7 @@
           <td>{{ message.gender }}</td>
           <td>{{ message.part }}</td>
           <td>{{ message.group }}</td>
+          <td hidden>{{ index }}</td>
         </tr>
       </tbody>
     </table>
@@ -44,7 +45,6 @@ export default {
   },
   data() {
     return {
-      message: "",
       messages: [],
       aryRecord: [],
       len: null,
@@ -55,12 +55,10 @@ export default {
       // 定義
       var targetEl = event.target.parentElement;
       this.len = targetEl.childElementCount;
-      
       // 初期化
       if(this.aryRecord.length){
         this.aryRecord = [];
       }
-      
       // 配列 → Modalコンポーネントへ
       for(let i = 0; i < this.len; i++){
         this.aryRecord.push(targetEl.children[i].textContent);
@@ -70,7 +68,6 @@ export default {
   mounted() {
     firebase.database().ref("member").on("value", snapshot => {
       var obj = snapshot.val();
-      console.log("member⇒" + obj);
       this.messages = obj;
     });
   }
