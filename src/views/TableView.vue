@@ -1,34 +1,35 @@
 <template>
   <div>
     <h1>Firebase Realtime Database 抽出⇒表示</h1>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">name</th>
-          <th scope="col">age</th>
-          <th scope="col">birthday</th>
-          <th scope="col">gender</th>
-          <th scope="col">part</th>
-          <th scope="col">group</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr 
-        v-for="(message, index) in messages" 
-        :key="index" 
-        data-bs-toggle="modal" 
-        data-bs-target="#exampleModal" 
-        @click="myFunction($event)">
-          <td>{{ message.name }}</td>
-          <td>{{ message.age }}</td>
-          <td>{{ message.birthday }}</td>
-          <td>{{ message.gender }}</td>
-          <td>{{ message.part }}</td>
-          <td>{{ message.group }}</td>
-          <td hidden>{{ index }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-area">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">name</th>
+            <th scope="col">age</th>
+            <th scope="col">birthday</th>
+            <th scope="col">gender</th>
+            <th scope="col">part</th>
+            <th scope="col">group</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-bs-toggle="modal" 
+              data-bs-target="#exampleModal"
+              v-for="(message, index) in messages" 
+              :key="index"
+              @click="myFunction($event)">
+            <td>{{ message.name }}</td>
+            <td>{{ message.age }}</td>
+            <td>{{ message.birthday }}</td>
+            <td>{{ message.gender }}</td>
+            <td>{{ message.part }}</td>
+            <td>{{ message.group }}</td>
+            <td hidden>{{ index }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <Modal :modal="aryRecord"/>
 </template>
@@ -73,3 +74,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.table-area{
+  padding: 0px 80px 0px;
+}
+</style>

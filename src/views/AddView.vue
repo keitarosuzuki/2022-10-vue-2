@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Firebase Realtime Database 登録 動作確認</h1>
-    <div class="input-group mb-3">
+    <div class="input-group mb-3 input-area">
       <input type="text" 
-             class="form-control border-success border-2" 
+             class="form-control" 
              placeholder="名前" 
              aria-label="Username" 
              aria-describedby="basic-addon1"
@@ -81,3 +81,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.input-area{
+  padding: 0px 80px 0px;
+}
+</style>
